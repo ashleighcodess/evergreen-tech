@@ -691,55 +691,274 @@
             border: 1px solid var(--gray-200);
         }
 
-        /* CTA */
-        .cta {
+        /* Contact Form */
+        .contact {
             padding: 120px 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
         }
 
-        .cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        .cta .container {
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta h2 {
-            font-size: clamp(32px, 4vw, 48px);
-            font-weight: 800;
+        .contact .section-header h2 {
             color: var(--white);
+        }
+
+        .contact .section-header p {
+            color: var(--gray-400);
+        }
+
+        .contact .section-label {
+            background: rgba(255,255,255,0.1);
+            color: var(--primary-light);
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+        }
+
+        .form-progress {
+            margin-bottom: 40px;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: var(--gray-200);
+            border-radius: 4px;
+            overflow: hidden;
             margin-bottom: 16px;
         }
 
-        .cta p {
-            font-size: 18px;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+        .progress-fill {
+            height: 100%;
+            width: 25%;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 4px;
+            transition: width 0.4s ease;
         }
 
-        .cta .btn {
-            background: var(--white);
-            color: var(--primary);
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
         }
 
-        .cta .btn:hover {
+        .progress-step {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
             background: var(--gray-100);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            color: var(--gray-400);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .progress-step.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .progress-step.completed {
+            background: var(--primary-light);
+            color: var(--white);
+        }
+
+        .form-step {
+            display: none;
+            animation: fadeSlide 0.4s ease;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        @keyframes fadeSlide {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .step-content h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 16px;
+            font-family: inherit;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            transition: all 0.2s;
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(45, 90, 61, 0.1);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--gray-400);
+        }
+
+        .select-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray-500);
+            margin-bottom: 8px;
+        }
+
+        .option-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .option-card {
+            cursor: pointer;
+        }
+
+        .option-card input {
+            display: none;
+        }
+
+        .option-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 20px 16px;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .option-card input:checked + .option-content {
+            border-color: var(--primary);
+            background: rgba(45, 90, 61, 0.05);
+        }
+
+        .option-content:hover {
+            border-color: var(--primary-light);
+        }
+
+        .option-icon {
+            font-size: 28px;
+        }
+
+        .option-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-nav {
+            display: flex;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .form-nav .btn {
+            flex: 1;
+        }
+
+        .form-nav .btn-prev {
+            flex: 0.5;
+        }
+
+        .form-success {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: var(--white);
+            margin: 0 auto 24px;
+            animation: scaleIn 0.5s ease;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .success-content h3 {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .success-content p {
+            color: var(--gray-500);
+            margin-bottom: 24px;
+        }
+
+        .form-toggle {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 14px;
+            color: var(--gray-500);
+        }
+
+        .form-toggle a {
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 32px 24px;
+            }
+
+            .option-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-nav {
+                flex-direction: column;
+            }
+
+            .form-nav .btn-prev {
+                flex: 1;
+                order: 2;
+            }
         }
 
         /* Footer */
@@ -1485,12 +1704,158 @@
         </div>
     </section>
 
-    <!-- CTA -->
-    <section class="cta" id="contact">
-        <div class="container fade-in">
-            <h2>Let's Build Something That Lasts</h2>
-            <p>Tell us about your business challenge. We'll show you how custom software can solve it.</p>
-            <a href="mailto:hello@evergreentech.studio" class="btn btn-large">Start a Conversation</a>
+    <!-- Contact Form -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">Get Started</span>
+                <h2>Let's Build Something That Lasts</h2>
+                <p>Tell us about your project. It only takes a minute.</p>
+            </div>
+
+            <div class="form-container fade-in">
+                <!-- Progress Bar -->
+                <div class="form-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-steps">
+                        <span class="progress-step active" data-step="1">1</span>
+                        <span class="progress-step" data-step="2">2</span>
+                        <span class="progress-step" data-step="3">3</span>
+                        <span class="progress-step" data-step="4">4</span>
+                    </div>
+                </div>
+
+                <form id="contactForm" class="multi-step-form">
+                    <!-- Step 1: Name -->
+                    <div class="form-step active" data-step="1">
+                        <div class="step-content">
+                            <h3>Hey there! What's your name?</h3>
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" placeholder="Your name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="company" name="company" placeholder="Company name (optional)">
+                            </div>
+                        </div>
+                        <div class="form-nav">
+                            <button type="button" class="btn btn-primary btn-next">Continue →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Contact Info -->
+                    <div class="form-step" data-step="2">
+                        <div class="step-content">
+                            <h3>How can we reach you?</h3>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="Email address" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" id="phone" name="phone" placeholder="Phone number (optional)">
+                            </div>
+                        </div>
+                        <div class="form-nav">
+                            <button type="button" class="btn btn-outline btn-prev">← Back</button>
+                            <button type="button" class="btn btn-primary btn-next">Continue →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Project Type -->
+                    <div class="form-step" data-step="3">
+                        <div class="step-content">
+                            <h3>What are you looking to build?</h3>
+                            <div class="option-grid">
+                                <label class="option-card">
+                                    <input type="checkbox" name="project_type" value="Customer Portal">
+                                    <span class="option-content">
+                                        <span class="option-icon">🔐</span>
+                                        <span class="option-label">Customer Portal</span>
+                                    </span>
+                                </label>
+                                <label class="option-card">
+                                    <input type="checkbox" name="project_type" value="Admin Dashboard">
+                                    <span class="option-content">
+                                        <span class="option-icon">📊</span>
+                                        <span class="option-label">Admin Dashboard</span>
+                                    </span>
+                                </label>
+                                <label class="option-card">
+                                    <input type="checkbox" name="project_type" value="Booking System">
+                                    <span class="option-content">
+                                        <span class="option-icon">📅</span>
+                                        <span class="option-label">Booking System</span>
+                                    </span>
+                                </label>
+                                <label class="option-card">
+                                    <input type="checkbox" name="project_type" value="Ordering System">
+                                    <span class="option-content">
+                                        <span class="option-icon">🛒</span>
+                                        <span class="option-label">Ordering System</span>
+                                    </span>
+                                </label>
+                                <label class="option-card">
+                                    <input type="checkbox" name="project_type" value="Business Tools">
+                                    <span class="option-content">
+                                        <span class="option-icon">🧮</span>
+                                        <span class="option-label">Business Tools</span>
+                                    </span>
+                                </label>
+                                <label class="option-card">
+                                    <input type="checkbox" name="project_type" value="Something Else">
+                                    <span class="option-content">
+                                        <span class="option-icon">💡</span>
+                                        <span class="option-label">Something Else</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-nav">
+                            <button type="button" class="btn btn-outline btn-prev">← Back</button>
+                            <button type="button" class="btn btn-primary btn-next">Continue →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Details -->
+                    <div class="form-step" data-step="4">
+                        <div class="step-content">
+                            <h3>Tell us a bit more</h3>
+                            <div class="form-group">
+                                <textarea id="details" name="details" rows="4" placeholder="Describe your project or business challenge..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="select-label">Timeline</label>
+                                <select id="timeline" name="timeline">
+                                    <option value="">When do you need this?</option>
+                                    <option value="ASAP">As soon as possible</option>
+                                    <option value="1-2 months">Within 1-2 months</option>
+                                    <option value="3-6 months">Within 3-6 months</option>
+                                    <option value="Just exploring">Just exploring options</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-nav">
+                            <button type="button" class="btn btn-outline btn-prev">← Back</button>
+                            <button type="submit" class="btn btn-primary btn-submit">Send Message 🚀</button>
+                        </div>
+                    </div>
+
+                    <!-- Success State -->
+                    <div class="form-step form-success" data-step="5">
+                        <div class="success-content">
+                            <div class="success-icon">✓</div>
+                            <h3>We got your message!</h3>
+                            <p>Thanks for reaching out. We'll review your project details and get back to you within 24 hours.</p>
+                            <a href="#" class="btn btn-outline" onclick="resetForm(); return false;">Submit Another</a>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Simple Form Toggle -->
+                <div class="form-toggle">
+                    <p>Prefer a simple form? <a href="mailto:hello@evergreentech.studio">Email us directly</a></p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1622,6 +1987,109 @@
                 heroButtons.style.opacity = '1';
                 heroButtons.style.transform = 'translateY(0)';
             }, 600);
+        }
+
+        // Multi-step form functionality
+        const form = document.getElementById('contactForm');
+        const steps = document.querySelectorAll('.form-step');
+        const progressSteps = document.querySelectorAll('.progress-step');
+        const progressFill = document.getElementById('progressFill');
+        let currentStep = 1;
+        const totalSteps = 4;
+
+        function updateProgress() {
+            const percent = (currentStep / totalSteps) * 100;
+            progressFill.style.width = percent + '%';
+
+            progressSteps.forEach((step, index) => {
+                const stepNum = index + 1;
+                step.classList.remove('active', 'completed');
+                if (stepNum === currentStep) {
+                    step.classList.add('active');
+                } else if (stepNum < currentStep) {
+                    step.classList.add('completed');
+                }
+            });
+        }
+
+        function showStep(stepNum) {
+            steps.forEach(step => {
+                step.classList.remove('active');
+                if (parseInt(step.dataset.step) === stepNum) {
+                    step.classList.add('active');
+                }
+            });
+            currentStep = stepNum;
+            updateProgress();
+        }
+
+        function validateStep(stepNum) {
+            const currentStepEl = document.querySelector(`.form-step[data-step="${stepNum}"]`);
+            const requiredFields = currentStepEl.querySelectorAll('[required]');
+            let valid = true;
+
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    valid = false;
+                    field.style.borderColor = '#ef4444';
+                    field.addEventListener('input', () => {
+                        field.style.borderColor = '';
+                    }, { once: true });
+                }
+            });
+
+            return valid;
+        }
+
+        // Next buttons
+        document.querySelectorAll('.btn-next').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (validateStep(currentStep)) {
+                    showStep(currentStep + 1);
+                }
+            });
+        });
+
+        // Previous buttons
+        document.querySelectorAll('.btn-prev').forEach(btn => {
+            btn.addEventListener('click', () => {
+                showStep(currentStep - 1);
+            });
+        });
+
+        // Form submission
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => {
+                if (data[key]) {
+                    if (Array.isArray(data[key])) {
+                        data[key].push(value);
+                    } else {
+                        data[key] = [data[key], value];
+                    }
+                } else {
+                    data[key] = value;
+                }
+            });
+
+            // For now, log to console and show success
+            // In production, send to your backend or email service
+            console.log('Form submission:', data);
+
+            // Show success step
+            showStep(5);
+
+            // Hide progress bar on success
+            document.querySelector('.form-progress').style.display = 'none';
+        });
+
+        function resetForm() {
+            form.reset();
+            document.querySelector('.form-progress').style.display = 'block';
+            showStep(1);
         }
     </script>
 </body>
